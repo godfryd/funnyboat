@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /usr/share/games/funnyboat
+exec python /usr/share/games/funnyboat/main.py "$@"

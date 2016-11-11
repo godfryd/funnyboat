@@ -1,0 +1,143 @@
+funnyboat (1.5-10) unstable; urgency=medium
+
+  * Team upload.
+  * Declare compliance with Debian Policy 3.9.6.
+  * Vcs-Browser: Use https.
+  * wrap-and-sort -sa.
+  * Switch from ttf-dejavu to fonts-dejavu.
+
+ -- Markus Koschany <apo@debian.org>  Sat, 09 Jan 2016 15:32:08 +0100
+
+funnyboat (1.5-9) unstable; urgency=low
+
+  * Team upload.
+
+  [ Gonéri Le Bouder ]
+  * Remove myself from Uploaders.
+
+  [ Markus Koschany ]
+  * Switch to package format 3.0 (quilt)
+  * Bump compat level to 9 and require debhelper >=9.
+  * debian/control:
+    - Bump Standards-Version to 3.9.4, no changes needed.
+    - Drop quilt build dependency because package format 3.0 uses quilt by
+      default.
+    - Drop docbook-to-man build dependency and convert funnyboat.sgml to
+      funnyboat.6 man page.
+    - Move python dependency to Build-Depends-Indep and add also python-pygame
+      and python-ogg.
+    - Update to use the canonical Vcs-URI.
+    - Fix lintian warning "short description starts with an article".
+  * Simplify debian/rules by using dh sequencer and build with --python2.
+  * Install documentation and man page via manpages and docs file.
+  * Improve watch file by making the extension regex more flexible.
+  * Add DEP3 headers to all patches.
+  * Use install file to install all required game files.
+  * Add keywords and a comment in German to funnyboat.desktop.
+  * Update debian/copyright to copyright format 1.0.
+  * Rename funnyboat.sh to funnyboat and move the wrapper script to the bin
+    subdirectory.
+  * Add sink-the-titanic.patch which makes it easier to sink the ship.
+    Thanks to Vivien for the report and patch. (Closes: #582234)
+
+ -- Markus Koschany <apo@gambaru.de>  Wed, 15 May 2013 19:44:22 +0200
+
+funnyboat (1.5-8) unstable; urgency=low
+
+  [ Gonéri Le Bouder ]
+  * Fullscreen option
+    - add fullscreen.diff
+  * Fix crash if self.image.set_alpha arg is > int (Closes: #534596)
+    - add avoid_set_alpha_crash.diff
+  * Standards Version: 3.8.2 no changes
+  * Clean up in debian/rules
+
+  [ Paul Wise ]
+  * Do not call dh_desktop anymore
+
+ -- Gonéri Le Bouder <goneri@rulezlan.org>  Fri, 14 Aug 2009 22:26:59 +0200
+
+funnyboat (1.5-7) unstable; urgency=low
+
+  [ Cyril Brulebois ]
+  * Fix FTBFS with new “3.0 (quilt)” source package format by using a
+    patch level of 1 instead of 0 in the patches and by adjusting the
+    series file appropriately (i.e. by deleting the “-p0” option),
+    thanks to Raphaël Hertzog for the notice (Closes: #485347).
+
+  [ Ansgar Burchardt ]
+  * python-pyogg was renamed into python-ogg, update dependencies accordingly
+    (Closes: #494896)
+
+  [ Barry deFreese ]
+  * Add myself to uploaders.
+  * Move python-support and docbook-to-man to B-D-I.
+  * Bump Standards Version to 3.8.1. (No changes needed).
+
+ -- Barry deFreese <bdefreese@debian.org>  Fri, 20 Mar 2009 16:02:39 -0400
+
+funnyboat (1.5-6) unstable; urgency=low
+
+  * Remove python-numeric from the runtime dependency since it
+    is not needed with funnyboat 1.5 (Closes: #478443)
+
+ -- Gonéri Le Bouder <goneri@rulezlan.org>  Mon, 26 May 2008 23:09:13 +0200
+
+funnyboat (1.5-5) unstable; urgency=low
+
+  * Funnyboat only accepts 2 command line options (Closes: #477423)
+   -add patches/funnyboat-cursor-patch.diff
+  * Funnyboat should not display cursor (Closes: #477422)
+  * Thanks Brandon AKA winterknight for the two patches above
+  * debian/control: Change XS-Vcs-* to Vcs-*
+
+ -- Gonéri Le Bouder <goneri@rulezlan.org>  Thu, 24 Apr 2008 23:31:29 +0200
+
+funnyboat (1.5-4) unstable; urgency=low
+
+  [ Gonéri Le Bouder ]
+  * add save-sshot-in-homedir.diff to save the screenshot in the user homedir
+    (Closes: #465082)
+
+ -- Gonéri Le Bouder <goneri@rulezlan.org>  Mon, 11 Feb 2008 13:47:15 +0100
+
+funnyboat (1.5-3) unstable; urgency=low
+
+  [ Jon Dowland ]
+  * add Homepage: control field to source stanza
+
+  [ Gonéri Le Bouder ]
+  * remove the Homepage field from the description
+  * funnyboat.{desktop,menu} (Closes: #461018)
+   - install the files
+   - call dh_desktop and dh_menu
+  * bump standard version to 3.7.3, no change
+  * add a build dependency on python, since python-support is not
+    supposed to provide a python interpreter, see #391689
+    Thanks Joss
+
+  [ Marco Rodrigues ]
+  * compat 5
+
+ -- Gonéri Le Bouder <goneri@rulezlan.org>  Wed, 16 Jan 2008 11:07:03 +0100
+
+funnyboat (1.5-2) unstable; urgency=low
+
+  [ Cyril Brulebois ]
+  * Added XS-Vcs-Svn and XS-Vcs-Browser fields in the control file.
+
+  [ Gonéri Le Bouder ]
+  * depends on ttf-dejavu instead of ttf-bitstream-vera (Closes: #438812)
+
+ -- Gonéri Le Bouder <goneri@rulezlan.org>  Mon, 10 Sep 2007 00:25:52 +0200
+
+funnyboat (1.5-1) unstable; urgency=low
+
+  [Gonéri Le Bouder]
+  * First upload (closes: #408020)
+
+  [Miriam Ruiz]
+  * Updated copyright info
+  * Updated dependencies
+
+ -- Gonéri Le Bouder <goneri@rulezlan.org>  Sat,  2 Jun 2007 16:57:50 +0200

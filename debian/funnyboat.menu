@@ -1,0 +1,6 @@
+?package(funnyboat):needs="X11" \
+  section="Games/Action" \
+  title="Funny Boat" \
+  longtitle="Trip on the Funny Boat" \
+  command="/usr/games/funnyboat" \
+  icon="/usr/share/pixmaps/funnyboat.xpm"

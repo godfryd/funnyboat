@@ -1,0 +1,23 @@
+From: Goneri Le Bouder <goneri@rulezlan.org>
+Date: Fri, 10 May 2013 18:02:13 +0200
+Subject: use_debian_vera_ttf
+
+---
+ util.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/util.py b/util.py
+index 37ef822..c012934 100644
+--- a/util.py
++++ b/util.py
+@@ -9,8 +9,8 @@ pygame.font.init()
+ 
+ # The Cosmetica font seemed to be broken... had trouble rendering small text
+ # with underscores (_) ... it's weird.
+-smallfont = pygame.font.Font("data/Vera.ttf", 14)
+-bigfont = pygame.font.Font("data/Vera.ttf", 24)
++smallfont = pygame.font.Font("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 14)
++bigfont = pygame.font.Font("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
+ 
+ def get_config_path():
+     pathname = ""

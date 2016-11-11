@@ -1,0 +1,2 @@
+version=3
+http://sf.net/funnyboat/funnyboat-(.*)-src\.(?:tgz|tbz|txz|zip|(?:tar\.(?:gz|bz2|xz)))

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=funnyboat
+Icon=funnyboat
+Terminal=false
+Name=Funny Boat
+Comment=a side scrolling arcade shooter game on a steamboat
+Comment[fr_FR]=un étrange bateau a vapeur dans un jeu de tire amusant
+Comment[de]=ein seitwärts scrollender Arcade-Shooter auf einem Dampfschiff
+Categories=Game;ArcadeGame;
+Keywords=boat;funny;arcade;shooter;water;game;
