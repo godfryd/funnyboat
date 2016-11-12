@@ -15,8 +15,9 @@ class Options:
     MUSIC = 3
     NAME = 4
 
-    def __init__(self, screen):
+    def __init__(self, screen, gamepad):
         self.screen = screen
+        self.gamepad = gamepad
 
         if not Options.sky:
             Options.sky = util.load_image("taivas")
@@ -93,7 +94,12 @@ class Options:
                             if event.value > 0.5:
                                 self.change_right()
                     elif event.type == JOYBUTTONDOWN:
-                        if event.button == 0:
+                        if self.gamepad:
+                            if self.gamepad.is_pressed('a', event):
+                                self.change_right()
+                            elif self.gamepad.is_pressed('b', event):
+                                done = True
+                        elif event.button == 0:
                             #done = True
                             self.change_right()
                         elif event.button == 1:

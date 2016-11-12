@@ -27,6 +27,8 @@ import pirateboat
 import shark
 import seagull
 
+from gamepad import GamePad
+
 def init():
     health.init()
     steamboat.init()
@@ -68,6 +70,7 @@ def main():
     if pygame.joystick.get_count() > 0:
         joy = pygame.joystick.Joystick(0)
         joy.init()
+        gamepad = GamePad(joy)
 
     try:
         util.load_music("JDruid-Trip_on_the_Funny_Boat")
@@ -84,23 +87,23 @@ def main():
     main_selection = 0
 
     while True:
-        main_selection = Menu(screen, ("New Game", "High Scores", "Options", "Quit"), main_selection).run()
+        main_selection = Menu(screen, ("New Game", "High Scores", "Options", "Quit"), gamepad, main_selection).run()
         if main_selection == 0:
             # New Game
-            selection = Menu(screen, ("Story Mode", "Endless Mode")).run()
+            selection = Menu(screen, ("Story Mode", "Endless Mode"), gamepad).run()
             if selection == 0:
                 # Story
-                score = Game(screen).run()
+                score = Game(screen, gamepad).run()
                 Highscores(screen, score).run()
             elif selection == 1:
                 # Endless
-                score = Game(screen, True).run()
+                score = Game(screen, gamepad, True).run()
                 Highscores(screen, score, True).run()
         elif main_selection == 1:
             # High Scores
             selection = 0
             while True:
-                selection = Menu(screen, ("Story Mode", "Endless Mode", "Endless Online"), selection).run()
+                selection = Menu(screen, ("Story Mode", "Endless Mode", "Endless Online"), gamepad, selection).run()
                 if selection == 0:
                     # Story
                     Highscores(screen).run()
@@ -114,7 +117,7 @@ def main():
                     break
         elif main_selection == 2:
             # Options
-            selection = Options(screen).run()
+            selection = Options(screen, gamepad).run()
         else: #if main_selection == 3:
             # Quit
             return

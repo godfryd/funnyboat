@@ -33,16 +33,17 @@ rr=random.random
 
 def rrr(left,right):
     return left+rr()*(right-left)
-    
+
 class Game:
     sky = None
-    
-    
-    
-        
 
-    def __init__(self, screen, endless = False):
+
+
+
+
+    def __init__(self, screen, gamepad, endless = False):
         self.screen = screen
+        self.gamepad = gamepad
 
         self.sharks = []
         self.shark_sprites = pygame.sprite.Group()
@@ -179,7 +180,7 @@ class Game:
                             x = int(r * self.player.rect.left + (1.0-r) * self.player.rect.right)
                             point = (x, self.water.get_water_level(x))
                             self.particles.add_water_particle(point)
-    
+
                 for powerup in self.powerups:
                     powerup.update()
                     if powerup.picked:
@@ -245,11 +246,14 @@ class Game:
 
     def take_screenshot(self):
         i = 1
-        filename = "sshot.tga"
+        basedir = os.environ['HOME']
+        if not basedir:
+            basedir = '/home'
+        filename = basedir + "/funnyboat-sshot.tga"
         while os.path.exists(filename):
             i += 1
-            filename = "sshot" + str(i) + ".tga"
-        
+            filename = basedir + "/funnyboat-sshot" + str(i) + ".tga"
+
         pygame.image.save(self.screen, filename)
         print "Screenshot saved as " + filename
 
@@ -287,10 +291,10 @@ class Game:
                         self.player.move_left(False)
                         self.player.move_right(False)
             elif event.type == JOYBUTTONDOWN:
-                if event.button == 0:
+                if self.gamepad and self.gamepad.is_pressed('a', event) or not self.gamepad and event.button == 0:
                     if not self.pause:
                         self.player.jump()
-                elif event.button == 1:
+                elif self.gamepad and self.gamepad.is_pressed('rightshoulder', event) or not self.gamepad and event.button == 1:
                     if not self.pause:
                         if self.lastshot > MIN_FIRE_DELAY and not self.player.dying:
                             cb = Cannonball(self.player.rect, self.player.angle)
@@ -303,10 +307,13 @@ class Game:
                                 self.particles.add_fire_steam_particle(particle_point)
                             self.lastshot = 0
                             self.spacepressed = self.t
-                elif event.button == 5:
+                elif self.gamepad and self.gamepad.is_pressed('leftshoulder', event) or not self.gamepad and event.button == 5:
                     self.take_screenshot()
-                elif event.button == 8:
+                elif self.gamepad and self.gamepad.is_pressed('start', event) or not self.gamepad and event.button == 8:
                     self.set_pause()
+                elif self.gamepad and self.gamepad.is_pressed('back', event):
+                    self.done = True
+                    nextframe = True
             elif event.type == KEYDOWN:
                 if event.key == K_LEFT:
                     self.player.move_left(True)
@@ -353,7 +360,7 @@ class Game:
                             self.lastshot = 0
                         self.spacepressed = None
             elif event.type == JOYBUTTONUP:
-                if event.button == 1:
+                if self.gamepad and self.gamepad.is_pressed('b', event) or not self.gamepad and event.button == 1:
                     if not self.pause:
                         if self.spacepressed and self.t > self.spacepressed + FPS * 3 and not self.player.dying:
                             cb = Cannonball(self.player.rect, self.player.angle, special=True)
@@ -514,7 +521,7 @@ class Game:
                 if not self.titanic.dying and cb.vect[0] > 0:
                     if (Variables.sound):
                        Mine.sound.play()
-                    if cb.special: 
+                    if cb.special:
                         #special round is hard to fire, so lets reward our crafty player
                         self.titanic.damage(12)
                         self.score.add(100)
@@ -561,7 +568,7 @@ class Game:
                 particle_point[1] += pirate.rect.centery
                 for i in xrange(4):
                     self.particles.add_fire_steam_particle(particle_point)
-                
+
             if pirate.rect.right < self.screen.get_rect().left or pirate.dead:
                 self.pirates.remove(pirate)
                 self.pirate_sprites.remove(pirate)
@@ -619,4 +626,3 @@ class Game:
         if spawns[Level.POWERUPS]:
             self.powerups.append(Powerup())
             self.powerup_sprites.add(self.powerups[-1])
-

@@ -14,6 +14,6 @@ class Variables:
     aa = True
     alpha = True
     particles = True
-    sound = True    
+    sound = True
     music = True
     name = "Funny Boater"

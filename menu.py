@@ -9,8 +9,9 @@ class Menu:
     logo = None
     sky = None
 
-    def __init__(self, screen, menu, selection = 0):
+    def __init__(self, screen, menu, gamepad, selection = 0):
         self.screen = screen
+        self.gamepad = gamepad
 
         if not Menu.sky:
             Menu.sky = util.load_image("taivas")
@@ -73,7 +74,18 @@ class Menu:
                             if event.value > 0.5:
                                 self.move_down()
                     elif event.type == JOYBUTTONDOWN:
-                        if event.button == 0:
+                        if self.gamepad:
+                            if self.gamepad.is_pressed('a', event):
+                                done = True
+                            elif self.gamepad.is_pressed('b', event):
+                                self.selection = -1
+                                done = True
+                                nextframe = True
+                            elif self.gamepad.is_pressed('dpup', event):
+                                self.move_up()
+                            elif self.gamepad.is_pressed('dpdown', event):
+                                self.move_down()
+                        elif event.button == 0:
                             done = True
                     elif event.type == KEYDOWN:
                         if event.key == K_UP:
