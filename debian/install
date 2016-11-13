@@ -1,5 +1,6 @@
 *.py                                usr/share/games/funnyboat
 data                                usr/share/games/funnyboat
+gamecontrollerdb.txt                usr/share/games/funnyboat
 debian/bin/funnyboat                usr/games
 debian/funnyboat.desktop            usr/share/applications
 debian/funnyboat.xpm                usr/share/pixmaps
