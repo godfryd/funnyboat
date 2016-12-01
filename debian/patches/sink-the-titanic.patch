@@ -7,8 +7,6 @@ Bug: http://bugs.debian.org/582234
  titanic.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/titanic.py b/titanic.py
-index b8b25c0..47cd8c7 100644
 --- a/titanic.py
 +++ b/titanic.py
 @@ -43,7 +43,7 @@ class Titanic(pygame.sprite.Sprite):

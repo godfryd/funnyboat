@@ -6,11 +6,9 @@ Subject: funnyboat-cursor-patch
  main.py |    2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/main.py b/main.py
-index 32f6371..f3a8bfa 100644
 --- a/main.py
 +++ b/main.py
-@@ -62,6 +62,8 @@ def main():
+@@ -64,6 +64,8 @@ def main():
      pygame.display.set_icon(util.load_image("kuvake"))
      pygame.display.set_caption("Trip on the Funny Boat")
  

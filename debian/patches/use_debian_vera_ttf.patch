@@ -6,8 +6,6 @@ Subject: use_debian_vera_ttf
  util.py |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/util.py b/util.py
-index 37ef822..c012934 100644
 --- a/util.py
 +++ b/util.py
 @@ -9,8 +9,8 @@ pygame.font.init()

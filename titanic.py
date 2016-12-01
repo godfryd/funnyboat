@@ -43,7 +43,7 @@ class Titanic(pygame.sprite.Sprite):
     def damage(self, dec=1):
         self.health -= dec
 
-        if self.health == 0:
+        if self.health <= 0:
             self.die()
 
     def update(self):

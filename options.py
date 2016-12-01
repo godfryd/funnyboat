@@ -14,6 +14,7 @@ class Options:
     SOUND = 2
     MUSIC = 3
     NAME = 4
+    FULLSCREEN = 5
 
     def __init__(self, screen, gamepad):
         self.screen = screen
@@ -40,7 +41,8 @@ class Options:
                      "Antialiasing: " + (Variables.aa and "on" or "off"),
                      "Sound effects: " + (Variables.sound and "on" or "off"),
                      "Music: " + (Variables.music and "on" or "off"),
-                     "Player Name: " + Variables.name)
+                     "Player Name: " + Variables.name,
+                     "Fullscreen: " + (Variables.fullscreen and "on" or "off"))
 
     def run(self):
         done = False
@@ -144,6 +146,10 @@ class Options:
                     pygame.mixer.music.stop()
             except:
                 pass
+        elif self.selection == Options.FULLSCREEN:
+            Variables.fullscreen = not Variables.fullscreen
+            pygame.display.toggle_fullscreen()
+
         self.refresh()
 
     def change_right(self):

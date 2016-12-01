@@ -9,8 +9,8 @@ pygame.font.init()
 
 # The Cosmetica font seemed to be broken... had trouble rendering small text
 # with underscores (_) ... it's weird.
-smallfont = pygame.font.Font("data/Vera.ttf", 14)
-bigfont = pygame.font.Font("data/Vera.ttf", 24)
+smallfont = pygame.font.Font("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 14)
+bigfont = pygame.font.Font("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
 
 def get_config_path():
     pathname = ""
@@ -62,6 +62,8 @@ def load_config():
             Variables.sound = str_to_bool(value)
         elif variable == "aa":
             Variables.aa = str_to_bool(value)
+        elif variable == "fullscreen":
+            Variables.fullscreen = str_to_bool(value)
 
     f.close()
 
@@ -77,6 +79,7 @@ def save_config():
     print >> f, "name\t%s" % Variables.name
     print >> f, "sound\t%s" % Variables.sound
     print >> f, "aa\t%s" % Variables.aa
+    print >> f, "fullscreen\t%s" % Variables.fullscreen
 
     f.close()
 

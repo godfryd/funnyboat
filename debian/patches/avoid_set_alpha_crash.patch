@@ -9,8 +9,6 @@ argument is supposed to be < 256.
  particles.py |    4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/particles.py b/particles.py
-index 22c6319..0cec708 100644
 --- a/particles.py
 +++ b/particles.py
 @@ -24,7 +24,9 @@ class Particle (pygame.sprite.Sprite):

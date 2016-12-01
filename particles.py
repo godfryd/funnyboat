@@ -24,7 +24,9 @@ class Particle (pygame.sprite.Sprite):
         pygame.draw.ellipse(self.image, self.colour, self.image.get_rect())
 
         if Variables.alpha:
-            self.image.set_alpha(self.life * 255 * self.opacity / self.initial_life)
+            val = self.life * 255 * self.opacity / self.initial_life
+            if val < 256:
+                self.image.set_alpha(val)
 
     def update(self):
         self.rect.left += self.vect[0]

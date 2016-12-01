@@ -6,7 +6,6 @@ NEXTFRAME = USEREVENT + 1
 MIN_FIRE_DELAY = 10
 SCREEN_WIDTH = 400#320
 SCREEN_HEIGHT = 300#240
-SCREEN_FULLSCREEN = 0
 FPS = 30
 
 
@@ -17,3 +16,4 @@ class Variables:
     sound = True
     music = True
     name = "Funny Boater"
+    fullscreen = True

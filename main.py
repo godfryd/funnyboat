@@ -55,14 +55,16 @@ def main():
             elif arg == "-ns":
                 Variables.sound = False
             elif arg == "-f":
-                SCREEN_FULLSCREEN = True
+                Variables.fullscreen = True
 
     scr_options = 0
-    if SCREEN_FULLSCREEN: scr_options += FULLSCREEN
+    if Variables.fullscreen: scr_options += FULLSCREEN
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT),scr_options ,32)
 
     pygame.display.set_icon(util.load_image("kuvake"))
     pygame.display.set_caption("Trip on the Funny Boat")
+
+    pygame.mouse.set_visible(False)
 
     init()
 
