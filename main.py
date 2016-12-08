@@ -71,6 +71,8 @@ def main():
         joy = pygame.joystick.Joystick(0)
         joy.init()
         gamepad = GamePad(joy)
+    else:
+        gamepad = None
 
     try:
         util.load_music("JDruid-Trip_on_the_Funny_Boat")
